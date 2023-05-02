@@ -1,3 +1,9 @@
+# This code is for demo purposes only.
+# ALWAYS Test in a DEV environement before using in a PROD environment.
+# Please take the time to understand the code before running the code.
+
+
+
 
 # ----- [ Connect to vCenter ] -----
 Connect-VIServer -Server 'vcsa-8x.corp.local' -User 'administrator@corp.local' -Password 'VMware1!' -Force
