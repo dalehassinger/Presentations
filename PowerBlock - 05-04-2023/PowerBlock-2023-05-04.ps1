@@ -147,3 +147,23 @@ Disconnect-VIServer -Server * -Confirm:$false
 Get-VM | Get-CDDrive | Set-CDDrive -NoMedia -Confirm:$False
 
 Get-VM -Name Linux* | Get-CDDrive | Set-CDDrive -NoMedia -Confirm:$False
+
+
+
+
+
+
+# ----- [ SCSI Controller Type ] -----
+
+# ----- [ Connect to vCenter ] -----
+Connect-VIServer -Server 'vcsa-8x.corp.local' -User 'administrator@corp.local' -Password 'VMware1!' -Force
+
+# Code SCSI Controller Type from all VMs
+$allSCSIControllers = get-vm -name * | Get-ScsiController | Select-Object Parent,Type | Sort-Object Parent
+$allSCSIControllers | Export-Csv -Path C:\vCenterInfo\SCSI-Controllers.csv -NoTypeInformation
+
+# ----- [ Disconnect from vCenter ] -----
+Disconnect-VIServer -Server * -Confirm:$false
+
+
+
